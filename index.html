@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kekeland 02 — Guía del mundo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&family=Pixelify+Sans:wght@500;700&display=swap">
+<style>
+:root{--bg:#eef1ec;--panel:#fff;--ink:#17211d;--mute:#516059;--line:#cbd6ce;--side:#e2e9e1;--ok:#3f8a3a;--no:#b8402f;--accent:#5f8f3a;
+--hd:'Pixelify Sans','Trebuchet MS',monospace;--tx:'Nunito Sans','Segoe UI',system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1513;--panel:#15201d;--ink:#e5eee8;--mute:#9bafa6;--line:#283833;--side:#0a100e;--ok:#6cc264;--no:#ee7a68}}
+:root[data-theme="dark"]{--bg:#0d1513;--panel:#15201d;--ink:#e5eee8;--mute:#9bafa6;--line:#283833;--side:#0a100e;--ok:#6cc264;--no:#ee7a68}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--tx)}
+a{color:inherit}
+.app{display:block;min-height:100vh}
+aside{position:sticky;top:0;z-index:5;background:var(--side);border-bottom:1px solid var(--line);padding:calc(8px + env(safe-area-inset-top,0px)) 12px 8px}
+.brand{display:flex;align-items:center;gap:10px;font:700 20px var(--hd);margin-bottom:6px}
+.brand button{margin-left:auto}
+nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+nav .g{display:none;font-weight:800;font-size:13px;color:var(--mute);margin:14px 0 4px}
+nav a{display:flex;align-items:center;gap:8px;flex:none;text-decoration:none;padding:7px 11px;border:1px solid var(--line);border-radius:4px;background:var(--panel);font-size:14px;font-weight:600;white-space:nowrap}
+nav a[aria-current="page"]{border-color:var(--c);box-shadow:inset 0 -3px 0 var(--c);font-weight:800}
+.sw{width:16px;height:16px;flex:none;background:var(--c);box-shadow:inset -3px -3px 0 rgba(0,0,0,.28),inset 3px 3px 0 rgba(255,255,255,.3)}
+button{font:600 13px var(--tx);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:6px 10px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+main{padding:20px 16px 60px;max-width:900px;outline:none}
+h1,h2,h3{font-family:var(--hd);line-height:1.2;margin:0}
+h1{font-size:clamp(30px,7vw,46px)}
+h2{font-size:24px;margin:34px 0 12px}
+h3{font-size:19px}
+p{margin:.5em 0}
+.eh{display:flex;gap:16px;align-items:center;margin-bottom:8px}
+.big{width:56px;height:56px;flex:none;background:var(--accent);box-shadow:inset -8px -8px 0 rgba(0,0,0,.28),inset 8px 8px 0 rgba(255,255,255,.3)}
+.mute{color:var(--mute)}
+.quote{font-size:18px;font-style:italic;margin:2px 0 0}
+.box{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:4px;padding:12px 16px;margin:14px 0}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+.card h3{margin-bottom:6px}
+ul{margin:6px 0;padding:0;list-style:none}
+li{position:relative;padding:2px 0 2px 20px}
+li::before{content:"";position:absolute;left:2px;top:.75em;width:9px;height:9px;background:var(--accent)}
+.ok li::before{background:var(--ok)}.no li::before{background:var(--no)}
+.card.ok{border-top:4px solid var(--ok)}.card.no{border-top:4px solid var(--no)}
+.badge{display:inline-block;font-size:12px;font-weight:800;padding:2px 8px;border-radius:3px;border:1px solid var(--line);margin:0 6px 4px 0}
+.badge.g{background:var(--accent);color:#fff;border-color:var(--accent)}
+.after{background:color-mix(in srgb,var(--ok) 12%,transparent);border-radius:4px;padding:8px 12px;margin-top:8px;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.path{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:10px 0}
+.path span{padding:6px 12px;border:1px solid var(--line);background:var(--panel);border-radius:4px;font-weight:700}
+.path i{font-style:normal;color:var(--mute)}
+table{width:100%;border-collapse:collapse;background:var(--panel);font-size:15px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:800}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:4px}
+label.chk{display:flex;gap:10px;align-items:flex-start;padding:5px 0;cursor:pointer}
+label.chk input{margin-top:6px;accent-color:var(--accent);width:16px;height:16px}
+.pn{display:flex;justify-content:space-between;gap:10px;margin-top:36px}
+.pn a{text-decoration:none;border:1px solid var(--line);background:var(--panel);border-radius:4px;padding:10px 14px;font-weight:700}
+ol.st{padding-left:22px;list-style:decimal}ol.st li{padding-left:6px}ol.st li::before{display:none}
+pre{white-space:pre-wrap;font:14px/1.6 var(--tx);background:var(--panel);border:1px dashed var(--accent);border-radius:4px;padding:14px 16px;margin:8px 0}
+@media (min-width:900px){
+.app{display:grid;grid-template-columns:270px 1fr}
+aside{height:100vh;border-bottom:0;border-right:1px solid var(--line);overflow-y:auto;padding:calc(18px + env(safe-area-inset-top,0px)) 16px 24px}
+nav{flex-direction:column;gap:4px;overflow:visible}
+nav .g{display:block}
+nav a{border-color:transparent;background:transparent}
+nav a:hover{background:var(--panel)}
+main{padding:36px 44px 80px}}
+@media (prefers-reduced-motion:no-preference){main>*{animation:in .25s ease-out}@keyframes in{from{opacity:.4}to{opacity:1}}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside><div class="brand"><span class="sw" style="--c:#5f8f3a"></span>Kekeland 02<button id="th" aria-label="Cambiar tema">Tema</button></div><nav id="nav" aria-label="Secciones"></nav></aside>
+<main id="main" tabindex="-1"></main>
+</div>
+<script>
+const $=s=>document.querySelector(s),L=a=>a.map(x=>`<li>${x}</li>`).join('');
+const STD=['Armadura completa de diamante','Arma de diamante','Arco','Escudo','Comida suficiente'];
+const ERAS=[
+{id:'piedra',n:'I',name:'Edad de Piedra',c:'#9a6b3b',q:'El comienzo de la civilización',intro:'Los jugadores están empezando a conocer el mundo.',
+ok:['Madera, piedra y carbón','Comida, agricultura, pesca y animales','Camas propias, cofres y hornos','Herramientas y armas de piedra, arcos','Construcción','Exploración básica del Overworld','Aldeas solo para explorar y marcar'],
+no:['Hierro utilizable','Diamantes','Encantamientos y pociones','Nether y Netherite','End y Aether','Comercio con aldeanos y saqueo de aldeas'],
+add:['Action & Stuff','Realistic Biomes','Health Bars','Dynamic Lightning','Villager News','Dogs Add-On','Lápida','Definitive Tree Capitator'],
+vill:'Bloqueadas. Puedes visitarlas, explorarlas y marcar coordenadas, nada más.',
+goal:['Crear una base','Conseguir comida estable','Conocer el entorno','Comenzar la agricultura','Explorar el territorio','Prepararse para la Edad de Hierro']},
+{id:'hierro',n:'II',name:'Edad de Hierro',c:'#98a2aa',q:'La civilización comienza a dominar el metal',intro:'El hierro llega al grupo y con él las primeras mejoras de infraestructura.',
+ok:['Hierro y herramientas, armas y armadura de hierro','Escudos, cubos y tijeras','Yunques, rieles, tolvas y calderos','Otros objetos fabricados con hierro'],
+no:['Diamantes','Encantamientos avanzados relacionados con Diamante','Nether y Netherite','End y Aether','Aldeas y comercio con aldeanos'],
+add:['Mochila Herschel'],vill:'Continúan completamente bloqueadas. Se mantienen todas las restricciones de la era anterior.',
+goal:['Mejorar las bases','Crear infraestructura','Conseguir hierro','Preparar una zona comunitaria','Construir una Herrería Comunitaria']},
+{id:'diamante',n:'III',name:'Edad de Diamante',c:'#26bdbd',q:'La era de la tecnología',intro:'Un salto importante en el poder y la infraestructura del grupo. Se habilitan las primeras grandes expediciones del Overworld, que deben respetar el sistema de eventos.',
+ok:['Diamantes y herramientas, armas y armadura de diamante','Mesa de encantamientos y encantamientos','Uso completo de las aldeas','Comercio con aldeanos','Dungeons y estructuras del Overworld (como eventos)'],
+no:['Nether y Netherite','End y Aether'],add:['Advanced Waypoints'],vill:'Desbloqueadas por completo. Ver la sección Aldeas para el detalle.',
+goal:['Conseguir equipamiento de diamante','Encantar el equipo','Establecer sistemas de comercio','Prepararse para las primeras grandes dungeons','Preparar la expedición al Nether']},
+{id:'nether',n:'IV',name:'Era del Nether',c:'#c4452c',q:'Más allá del mundo conocido',intro:'El portal del Nether finalmente puede utilizarse.',
+ok:['Entrar al Nether','Nether Quartz, Glowstone, Nether Wart y Blaze Rods','Fortalezas, bastiones y Piglins','Recursos del Nether','Pociones','Netherite, después de la primera expedición grupal'],
+no:['End y Ender Dragon','Aether'],add:[],vill:'Libres desde la Edad de Diamante.',goal:[]},
+{id:'end',n:'V',name:'Era del End',c:'#8a5fd6',q:'El fin del mundo',intro:'Stronghold, dragón y Wither: los grandes jefes de la campaña se enfrentan juntos.',
+ok:['Buscar Strongholds y usar Eyes of Ender','Explorar el Stronghold y preparar el portal','Entrar al End','End Cities, Shulkers y Elytra (tras el dragón)','Nether Star y Beacon (tras el Wither)'],
+no:['Aether'],add:[],vill:'Libres desde la Edad de Diamante.',goal:[]},
+{id:'aether',n:'VI',name:'Era del Aether',c:'#3f9fdc',q:'Un nuevo mundo',intro:'Se desbloquea después de completar la progresión principal del End.',
+ok:['Construir el portal y entrar al Aether','Explorar biomas, criaturas y estructuras','Dungeons, recursos y artefactos','Equipamiento y progresión propia de Aether Legends'],
+no:[],add:['Aether Legends'],vill:'Libres desde la Edad de Diamante.',goal:[],
+note:'La progresión interna del Aether debe respetarse. No se deben saltar deliberadamente las etapas de equipamiento para conseguir enseguida los objetos más poderosos.'},
+{id:'legendaria',n:'VII',name:'Era Legendaria',c:'#d9a520',q:'Los últimos desafíos',intro:'La etapa final de la campaña. Se habilitan los grandes desafíos del Aether.',
+ok:['Slider','Valkyrie Queen','Karthuul'],no:[],add:[],vill:'Libres desde la Edad de Diamante.',goal:[],
+note:'La campaña se considera completada cuando los cuatro jugadores hayan participado en la derrota de los tres grandes jefes del Aether. Después llega el Mundo libre.'}];
+const EV=[
+{e:2,n:'Templo del Desierto',r:STD},{e:2,n:'Templo de la Jungla',r:STD},
+{e:2,n:'Mineshaft',b:'Solo si es expedición importante',note:'Puede explorarse durante la Edad de Diamante. Si el grupo la considera una expedición importante, la primera exploración se convierte en evento.',r:[]},
+{e:2,n:'Pillager Outpost',note:'Primera incursión importante.',r:STD},
+{e:2,adv:1,n:'Ancient City y Warden',note:'El Warden no tiene que ser derrotado. El objetivo es explorar la Ancient City, conseguir sus recursos y sobrevivir al Deep Dark. Si el Warden aparece, pueden enfrentarlo o evitarlo.',r:[...STD,'Pociones (recomendado)']},
+{e:2,adv:1,n:'Trial Chamber',note:'La primera Trial Chamber importante descubierta. No debe ser saqueada previamente por un solo jugador.',r:['Armadura completa de diamante','Armas de diamante','Arco','Escudo','Comida','Encantamientos básicos (recomendado)']},
+{e:2,adv:1,n:'Ocean Monument',r:['Armadura completa de diamante','Arma','Arco','Escudo','Comida','Preparación acuática','Poción de respiración acuática (recomendado)','Poción de visión nocturna (recomendado)']},
+{e:2,adv:1,n:'Woodland Mansion',r:['Armadura completa de diamante','Arma','Arco','Escudo','Comida','Pociones (opcional)']},
+{e:3,n:'Primera expedición al Nether',note:'Puede realizarse como evento grupal de campaña.',r:[],after:'El Nether queda libre para los jugadores y se desbloquea la búsqueda de Netherite.'},
+{e:4,n:'Descubrimiento del Stronghold',note:'Al encontrarlo se marca la ubicación. La primera exploración importante es con los 4: buscarlo, explorarlo, encontrar la sala del portal y preparar la expedición al End.',r:[]},
+{e:4,n:'Ender Dragon',note:'No se puede entrar al End por primera vez en solitario ni derrotar al dragón sin los otros tres jugadores. Los cuatro entran juntos.',r:[],after:'El End queda libre: Elytras, Shulkers, End Cities, y cada jugador puede volver por su cuenta.'},
+{e:4,n:'Wither',note:'La primera invocación y derrota requiere a los 4 jugadores.',r:['Armadura completa de diamante','Arma adecuada','Arco','Comida suficiente','Equipo bien preparado','Encantamientos, pociones y plan de combate (recomendado)'],after:'Nether Star y Beacon disponibles. Nuevas invocaciones del Wither, libres.'},
+{e:5,n:'Primera dungeon importante del Aether',note:'Al descubrirla se marca la ubicación y no se completa ni se saquea antes. Cuando estén los cuatro, se hace el evento.',r:['Equipamiento apropiado para el nivel de progresión alcanzado dentro del Aether']},
+{e:6,n:'Slider',note:'Primer enfrentamiento con los 4 jugadores.',r:[]},
+{e:6,n:'Valkyrie Queen',note:'Primer enfrentamiento con los 4 jugadores.',r:[]},
+{e:6,n:'Karthuul',note:'Primer enfrentamiento con los 4 jugadores.',r:[]}];
+const ADD=[['Action & Stuff',0],['Realistic Biomes',0],['Health Bars',0],['Dynamic Lightning',0],['Villager News',0],['Dogs Add-On',0],['Lápida',0],['Definitive Tree Capitator',0],['Mochila Herschel',1],['Advanced Waypoints',2],['Aether Legends',5]];
+const PAGES=[['reglas','Reglas del mundo','#5f8f3a'],['aldeas','Aldeas','#c98a3a'],['eventos','Eventos y requisitos','#d0673a'],['addons','Addons','#2f9aa0'],['admin','Admin y mundo libre','#d9a520']];
+const evCard=e=>`<article class="card"><h3>${e.n}</h3><p style="margin:6px 0"><span class="badge g">4 jugadores</span><span class="badge">${ERAS[e.e].name}</span>${e.adv?'<span class="badge">Diamante avanzada</span>':''}${e.b?`<span class="badge">${e.b}</span>`:''}</p>${e.note?`<p>${e.note}</p>`:''}${e.r.length?`<p class="mute" style="margin-bottom:0">Requisitos por jugador</p><ul>${L(e.r)}</ul>`:''}${e.after?`<div class="after"><b>Después del evento:</b> ${e.after}</div>`:''}</article>`;
+const V={
+reglas:()=>`<h1>Reglas del mundo</h1><p class="quote">No se trata de llegar primero. Se trata de llegar juntos.</p>
+<div class="box"><b>Propósito.</b> Una progresión compartida para que los cuatro jugadores disfruten la aventura sin que quienes tienen más tiempo terminen el contenido antes que los demás.</div>
+<div class="box"><b>Sin fechas.</b> La duración de cada era no forma parte de las reglas. El Administrador decide cuándo empieza y termina cada era según el progreso del grupo.</div>
+<h2>Reglas fundamentales</h2><div class="cols">
+<div class="card"><h3>Progresión colectiva</h3><p>Una nueva era se habilita para todos los jugadores al mismo tiempo.</p></div>
+<div class="card"><h3>Nada de rush</h3><p>Jugar más horas no permite saltarse una era ni usar contenido todavía bloqueado.</p></div>
+<div class="card"><h3>Eventos grupales</h3><p>Ciertos descubrimientos, estructuras y jefes son eventos. La primera vez deben participar los 4 jugadores.</p></div>
+<div class="card"><h3>Eventos pendientes</h3><p>Si los cuatro no pueden conectarse, el evento queda pendiente. No hace falta fijar fecha.</p></div>
+<div class="card"><h3>Después del primer evento</h3><p>Las visitas siguientes a esa estructura son libres e individuales. La restricción aplica solo al primer evento.</p></div></div>
+<h2>Recursos de eras futuras</h2><div class="cols"><div class="card ok"><h3>Sí puedes</h3><ul class="ok">${L(['Recogerlo','Guardarlo'])}</ul></div>
+<div class="card no"><h3>No puedes</h3><ul class="no">${L(['Utilizarlo','Fabricar objetos con él','Comerciarlo para obtener ventaja de una era futura'])}</ul></div></div>
+<p class="mute">Al desbloquearse la era correspondiente, el recurso se usa con normalidad.</p>
+<h2>Orden de las dimensiones</h2><div class="path"><span>Overworld</span><i>→</i><span>Nether · Era IV</span><i>→</i><span>End · Era V</span><i>→</i><span>Aether · Era VI</span></div>
+<p>Nadie entra a una dimensión antes de que su era esté desbloqueada.</p>`,
+aldeas:()=>`<h1>Aldeas</h1><p class="quote">Bloqueadas hasta la Edad de Diamante.</p><p>Antes de esa era son zonas neutrales: se descubren y se marcan, pero no se explotan.</p>
+<div class="cols"><div class="card ok"><h3>Piedra y Hierro: permitido</h3><ul class="ok">${L(['Visitar','Explorar','Marcar las coordenadas'])}</ul></div>
+<div class="card no"><h3>Piedra y Hierro: prohibido</h3><ul class="no">${L(['Abrir cofres o sacar recursos','Llevarse camas, cultivos, heno, estaciones de trabajo o campanas','Transportar aldeanos','Matar aldeanos deliberadamente','Comerciar'])}</ul></div></div>
+<div class="card ok" style="margin-top:14px"><h3>Edad de Diamante: desbloqueo total</h3><ul class="ok">${L(['Abrir cofres','Usar cultivos y obtener heno','Usar camas y estaciones de trabajo','Transportar aldeanos','Comerciar y crear salas de comercio','Usar libros encantados y equipamiento obtenido por comercio'])}</ul></div>
+<h2>Resumen por era</h2><div class="tw"><table><tr><th>Era</th><th>Estado</th></tr><tr><td>Edad de Piedra</td><td>Bloqueadas</td></tr><tr><td>Edad de Hierro</td><td>Bloqueadas</td></tr><tr><td>Edad de Diamante</td><td>Desbloqueadas</td></tr></table></div>`,
+eventos:()=>`<h1>Eventos y requisitos</h1><p class="quote">Un evento es una actividad que se hace en conjunto porque marca un momento importante.</p>
+<h2>Al descubrir una estructura evento</h2><ol class="st"><li>Encontrarla</li><li>Marcar las coordenadas</li><li>Avisar al grupo</li><li>No saquearla ni completarla</li><li>Esperar a los 4</li><li>Realizar el evento</li></ol>
+<h2>Preparación mínima</h2><div class="cols"><div class="card"><h3>Dungeon normal de Diamante</h3><ul>${L(STD)}</ul></div>
+<div class="card"><h3>Dungeon avanzada</h3><p class="mute">Lo anterior, más:</p><ul>${L(['Encantamientos recomendados','Pociones según la estructura','Recursos específicos','Equipo adicional para el entorno'])}</ul></div></div>
+<p>No hace falta el mismo inventario: cada jugador debe cumplir el nivel mínimo de preparación.</p>
+<h2>Lista de eventos</h2><div class="chips" id="fl"><button aria-pressed="true" data-f="all">Todos</button>${ERAS.slice(2).map((e,i)=>`<button aria-pressed="false" data-f="${i+2}">${e.name}</button>`).join('')}</div>
+<div class="cols" id="evl">${EV.map(evCard).join('')}</div>`,
+addons:()=>`<h1>Addons</h1><p class="quote">Ocho están activos desde el inicio; el resto se desbloquea con las eras.</p>
+<div class="tw"><table><tr><th>Addon</th><th>Se desbloquea</th></tr>${ADD.map(a=>`<tr><td>${a[0]}</td><td>${a[1]?ERAS[a[1]].name:'Desde el inicio'}</td></tr>`).join('')}</table></div>
+<h2>Por momento de desbloqueo</h2><div class="cols">${[[0,'Desde el inicio'],[1,'Edad de Hierro'],[2,'Edad de Diamante'],[5,'Era del Aether']].map(g=>`<div class="card"><h3>${g[1]}</h3><ul>${L(ADD.filter(a=>a[1]==g[0]).map(a=>a[0]))}</ul></div>`).join('')}</div>
+<p class="mute">Aether Legends aporta la progresión propia del Aether, que debe respetarse.</p>`,
+admin:()=>`<h1>Admin y mundo libre</h1>
+<h2>Autoridad del Administrador</h2><ul>${L(['Determinar cuándo termina una era','Anunciar el desbloqueo de la siguiente','Resolver situaciones no contempladas en el reglamento','Decidir si una estructura se trata como evento','Confirmar cuándo un evento está completado','Ajustar las reglas si una mecánica afecta negativamente la experiencia del grupo'])}</ul>
+<h2>Comunicado de nueva era</h2><pre id="ann">COMUNICADO DE KEKELAND 02
+
+Después de completar los objetivos de la etapa anterior y considerando que el grupo está preparado:
+
+¡NUEVA ERA DESBLOQUEADA!
+
+A partir de este momento, todos los jugadores pueden utilizar el contenido correspondiente a la nueva era.
+
+Próximo objetivo: continuar juntos la aventura de Kekeland 02.</pre><button id="cp">Copiar comunicado</button>
+<h2>Mundo libre</h2><p>Al completar la Era Legendaria todo queda desbloqueado.</p><ul>${L(['Construcción libre y megaestructuras','Granjas automáticas y automatización','Proyectos comunitarios','Exploración libre y colecciones','Comercio','Repetir dungeons y jefes','Todo el contenido de los addons'])}</ul>`};
+function eraView(i){const e=ERAS[i],ev=EV.filter(x=>x.e==i),p=ERAS[i-1],n=ERAS[i+1],sv=k=>{try{return localStorage.getItem(k)=='1'}catch(_){return false}};
+return `<div class="eh"><span class="big"></span><div><p class="mute" style="margin:0">Era ${e.n} de VII</p><h1>${e.name}</h1></div></div><p class="quote">${e.q}</p><p>${e.intro}</p>
+${e.note?`<div class="box">${e.note}</div>`:''}
+<div class="cols" style="margin-top:14px"><div class="card ok"><h3>Permitido</h3><ul class="ok">${L(e.ok)}</ul></div>${e.no.length?`<div class="card no"><h3>Todavía bloqueado</h3><ul class="no">${L(e.no)}</ul></div>`:''}</div>
+<h2>Addons</h2>${e.add.length?`<p class="mute">${i?'Se desbloquea en esta era:':'Disponibles desde el inicio:'}</p><div class="chips">${e.add.map(a=>`<span class="badge">${a}</span>`).join('')}</div>`:'<p class="mute">Esta era no desbloquea addons nuevos.</p>'}
+<h2>Aldeas</h2><p>${e.vill}</p>
+${e.goal.length?`<h2>Objetivos de la era</h2>${e.goal.map((g,j)=>`<label class="chk"><input type="checkbox" data-k="k02:${e.id}:${j}" ${sv(`k02:${e.id}:${j}`)?'checked':''}><span>${g}</span></label>`).join('')}<p class="mute" style="font-size:14px">Tus marcas se guardan solo en este navegador.</p>`:''}
+${ev.length?`<h2>Eventos de esta era</h2><div class="cols">${ev.map(evCard).join('')}</div>`:''}
+<div class="pn">${p?`<a href="#/${p.id}">← ${p.name}</a>`:'<span></span>'}${n?`<a href="#/${n.id}">${n.name} →</a>`:`<a href="#/admin">Mundo libre →</a>`}</div>`}
+function nav(){$('#nav').innerHTML='<div class="g">Reglamento</div>'+PAGES.slice(0,4).map(p=>`<a href="#/${p[0]}" style="--c:${p[2]}"><span class="sw"></span>${p[1]}</a>`).join('')+'<div class="g">Eras</div>'+ERAS.map(e=>`<a href="#/${e.id}" style="--c:${e.c}"><span class="sw"></span>${e.n} · ${e.name}</a>`).join('')+'<div class="g">Cierre</div>'+`<a href="#/admin" style="--c:#d9a520"><span class="sw"></span>${PAGES[4][1]}</a>`}
+function go(){const id=location.hash.replace('#/','')||'reglas',i=ERAS.findIndex(e=>e.id==id),pg=PAGES.find(p=>p[0]==id),c=i>=0?ERAS[i].c:pg?pg[2]:'#5f8f3a';
+$('#main').innerHTML=i>=0?eraView(i):(V[id]||V.reglas)();document.documentElement.style.setProperty('--accent',c);
+document.querySelectorAll('nav a').forEach(a=>a.getAttribute('href')=='#/'+id?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+const cur=document.querySelector('nav a[aria-current]');if(cur&&cur.scrollIntoView)cur.scrollIntoView({block:'nearest',inline:'center'});
+document.title=(i>=0?ERAS[i].name:pg?pg[1]:'Guía')+' — Kekeland 02';window.scrollTo(0,0)}
+document.addEventListener('click',e=>{const f=e.target.closest('#fl button');if(f){document.querySelectorAll('#fl button').forEach(b=>b.setAttribute('aria-pressed',b==f));const v=f.dataset.f;$('#evl').innerHTML=EV.filter(x=>v=='all'||x.e==v).map(evCard).join('');return}
+if(e.target.id=='cp'){const t=$('#ann').textContent;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>e.target.textContent='Copiado',()=>e.target.textContent='No se pudo copiar')}
+if(e.target.id=='th'){const r=document.documentElement,d=r.dataset.theme?r.dataset.theme=='dark':matchMedia('(prefers-color-scheme:dark)').matches;r.dataset.theme=d?'light':'dark'}});
+document.addEventListener('change',e=>{const k=e.target.dataset&&e.target.dataset.k;if(k)try{localStorage.setItem(k,e.target.checked?'1':'0')}catch(_){}});
+addEventListener('hashchange',go);nav();go();
+</script>
+</body>
+</html>
